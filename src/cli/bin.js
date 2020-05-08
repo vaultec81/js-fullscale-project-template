@@ -34,11 +34,11 @@ async function main() {
   try {
     const data = await cli(command, async (argv) => {
       if (!['daemon', 'init'].includes(command[0])) {
-        const { pinza, isDaemon, cleanup } = await getInstance(argv)
+        const { application, isDaemon, cleanup } = await getInstance(argv)
 
         ctx = {
           ...ctx,
-          pinza,
+          application,
           isDaemon,
           cleanup
         }
@@ -55,7 +55,7 @@ async function main() {
   } catch (err) {
 
     //if (err.code === NotEnabledError.code) {
-    //  err.message = `no pinza folder found in ${ctx.repoPath}.\nplease run: 'pinza init'`
+    //  err.message = `no MyProjectName folder found in ${ctx.repoPath}.\nplease run: 'MyProjectName init'`
     //}
 
     // Handle yargs errors

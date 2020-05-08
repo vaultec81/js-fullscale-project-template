@@ -1,4 +1,4 @@
-const debug = require('debug')('pinza:daemon')
+const debug = require('debug')('MyProjectName:daemon')
 const Core = require('../core'); //MyProjectName client.
 const Components = require('../core/components')
 const apiEndpoints = require('../apiEndpoints')
@@ -8,9 +8,6 @@ class Daemon {
         this._options = options || {};
         this.repoPath = options.repoPath;
         this.config = new Components.Config(this.repoPath)
-
-
-
     }
     _apiEndpoints(iteratorCallback) {
         this.apiEndpoints._apiEndpoints(iteratorCallback)

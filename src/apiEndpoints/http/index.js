@@ -21,7 +21,7 @@ function hapiInfoToMultiaddr (info) {
     return toMultiaddr(uri)
   }
 
-async function serverCreator(serverAddrs, createServer, pinza) {
+async function serverCreator(serverAddrs, createServer, application) {
     serverAddrs = serverAddrs || []
     // just in case the address is just string
     serverAddrs = Array.isArray(serverAddrs) ? serverAddrs : [serverAddrs]
@@ -29,7 +29,7 @@ async function serverCreator(serverAddrs, createServer, pinza) {
     const servers = []
     for (const address of serverAddrs) {
         const addrParts = address.split('/')
-        const server = await createServer(addrParts[2], addrParts[4], pinza)
+        const server = await createServer(addrParts[2], addrParts[4], application)
         await server.start()
         server.info.ma = hapiInfoToMultiaddr(server.info)
         servers.push(server)
